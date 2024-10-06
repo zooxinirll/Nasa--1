@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+    }
+    .gallery-section {
+      margin-bottom: 50px;
+    }
+    .gallery-header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: left;
+      color: #e50914;
+      position: relative;
+      display: inline-block;
+    }
+    .gallery-header::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background-color: #e50914;
+      bottom: -5px;
+      left: 0;
+    }
+    .image-box {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    .image-box img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      scroll-snap-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .image-box img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .image-box img:active {
+      transform: scale(0.9);
+    }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .image-box img {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-header">Unix</div>
+    <div class="image-box">
+      <img src="https://i.ibb.co/fDnwj4d/39679-2534774799.jpg" alt="Image 1">
+      <img src="https://i.ibb.co/BB1xgYN/mountains-and-cosmo-planets-b-Gltami-Um-Zqara-Wkp-JRmbmdlr-WZlb-WU-3353109991.jpg" alt="Image 2">
+      <img src="https://i.ibb.co/sQZJm6F/earth-planet-4k-8.jpg" alt="Image 3">
+      <img src="https://i.ibb.co/VqxpRKC/pngtree-stunning-nighttime-view.png">
+      <img src="https://i.ibb.co/PNRxrbM/wp9036278-909881242.jpg">
+      <img src="https://i.ibb.co/6vJ3BkW/wp8439315-1948431384.jpg" alt="Image ">
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-header">Planets</div>
+    <div class="image-box">
+      <img src="https://i.ibb.co/r4gHbMN/2920191-1145236473.jpg" alt="Image 1">
+      <img src="https://i.ibb.co/M9TSKRL/venus.jpg" alt="Image 2">
+      <img src="https://i.ibb.co/5R69Ldk/earth-planet-4k-tc-2560x1440-3671640158.jpg" alt="Image 3">
+      <img src="https://i.ibb.co/D1g1PQt/Mars.jpg" alt="Image 14">
+      <img src="https://i.ibb.co/xjTtZGW/Jupiter.jpg" alt="Image 42">
+      <img src="https://i.ibb.co/Kxy1fNt/saturn.jpg" alt="84">
+       <img src="https://i.ibb.co/9s3JDRj/Uranus-3923832248.jpg" alt=" 984">
+       <img src="https://i.ibb.co/P6TPqcv/Neptune.jpg" alt="Image 409">
+    </div>
+  </section>
+  </section>
+
+
+
+  <script>
+    document.querySelectorAll('.image-box').forEach(box => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      box.addEventListener('mousedown', (e) => {
+        isDown = true;
+        box.classList.add('active');
+        startX = e.pageX - box.offsetLeft;
+        scrollLeft = box.scrollLeft;
+      });
+      box.addEventListener('mouseleave', () => {
+        isDown = false;
+        box.classList.remove('active');
+      });
+      box.addEventListener('mouseup', () => {
+        isDown = false;
+        box.classList.remove('active');
+      });
+      box.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - box.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        box.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+</body>
+  </html>
+  

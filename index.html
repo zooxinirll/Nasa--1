@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpaceX</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      list-style: none;
+      text-decoration: none;
+    }
+    body {
+      background-color: #121212;
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 9%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.9);
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: white;
+    }
+    .navlist {
+      display: flex;
+    }
+    .navlist a {
+      color: white;
+      margin-left: 60px;
+      font-size: 15px;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: all 0.55s ease;
+    }
+    .navlist a:hover {
+      border-bottom: 2px solid white;
+    }
+    #menu-icon {
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      display: none;
+    }
+    .hero {
+      height: 100vh;
+      width: 100%;
+      background-image: url(https://github.com/user-attachments/assets/515a7af0-7ddd-41fc-8667-a3f28028db91);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in;
+    }
+    .hero-text p {
+      font-size: 24px;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease-in 0.5s;
+    }
+    .hero-text a {
+      padding: 10px 20px;
+      background-color: #e50914;
+      color: white;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      animation: fadeIn 2s ease-in 1s;
+    }
+    .hero-text a:hover {
+      background-color: #f40612;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .cards {
+      display: flex;
+      overflow-x: auto;
+      padding: 50px 9%;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      width: 300px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      transition: opacity 0.3s ease;
+    }
+    .card:hover img {
+      opacity: 0.8;
+    }
+    .card h2 {
+      margin: 20px 0 10px;
+      font-size: 24px;
+    }
+    .card p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .card a {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #e50914;
+      color: white;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .card a:hover {
+      background-color: #f40612;
+    }
+    .info-section, .intro-section {
+      padding: 50px 9%;
+      text-align: center;
+      background-color: #121212;
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+    .info-section h2, .intro-section h2 {
+      font-size: 36px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+    .info-section p, .intro-section p {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+    .author {
+      font-size: 16px;
+      font-style: italic;
+      color: #e50914;
+    }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navlist {
+        display: none;
+      }
+      #menu-icon {
+        display: block;
+      }
+      .hero-text h1 {
+        font-size: 40px;
+      }
+      .hero-text p {
+        font-size: 20px;
+      }
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+      .info-section, .intro-section {
+        padding: 20px 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <a href="#" class="logo">INTERCEPTORS</a>
+    <ul class="navlist">
+      <li><a href="#">Home</a></li>
+      <li><a href="/gallery.html">Gallery</a></li>
+      <li><a href="/Orrery.html">Orrery</a></li>
+      <li><a href="/planets.html">Planets</a></li>
+    </ul>
+    <div class="bx bx-menu" id="menu-icon">&#9776;</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to Space Showcase</h1>
+      <p>Your ultimate Space destination</p>
+      <a href="#cards">Explore</a>
+    </div>
+  </section>
+
+  <section class="cards" id="cards">
+    <div class="card">
+      <img src="" alt="">
+      <h2>Gouri Sankar A</h2>
+      <p>Cyber Security Researcher, Developer, Programmer, Junior Software Developer</p>
+      <a href="">Follow</a>
+    </div>
+    <div class="card">
+      <img src="" alt="">
+      <h2>Robin Roy</h2>
+      <p>Video/Photography, Editor, Graphic Designer, Junior Software Developer, Programmer</p>
+      <a href="">Follow</a>
+    </div>
+    <div class="card">
+      <img src="" alt="">
+      <h2>Sanoj Sunny</h2>
+      <p>Artist, Singer, Sound Engineer, Junior Software Developer, Programmer</p>
+      <a href="">Follow</a>
+    </div>
+    <div class="card">
+      <img src="" alt="">
+      <h2>Vishnu H Nair</h2>
+      <p>Photographer, Junior Software Developer, Programmer</p>
+      <br>
+      <a href="">Follow</a>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <h2>Introduction to Space Exploration</h2>
+    <p>Welcome to our space web app, your gateway to exploring the vast wonders of our solar system and beyond. From the fiery heart of our solar system—the Sun—to the distant icy asteroids, this app offers comprehensive information on planets, satellites, and other celestial objects. Whether you are curious about Earth's neighboring planets, the mysterious outer worlds, or the science behind asteroids and satellites, this platform will take you on a journey through space, unlocking knowledge about the universe's endless frontiers.</p>
+  </section>
+
+  <section class="info-section">
+    <h2>About Us</h2>
+    <p>With detailed insights, interactive content, and visually engaging representations, this app serves as a valuable resource for space enthusiasts, students, and curious minds eager to learn about the cosmos. Embark on an educational adventure as we unravel the mysteries of planets, the Sun, and the countless objects that inhabit space.</p>
+    <p class="author">Author: INTERCEPTORS</p>
+  </section>
+
+  <script>
+    // Change header background on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -19,4 +19,6 @@ The project addresses the challenge of making space education accessible and eng
 ### Why Is It Important ? 
 
 This platform promotes awareness of space science and exploration, making it more accessible to a broader audience. It serves as an educational tool for students, enthusiasts, and the general public, encouraging interest in astronomy and scientific discovery. By using innovative technology and captivating design, it enhances the learning experience and contributes to space education efforts
-**[SpaceX]([https://zooxinirll.github.io/interceptors.github.io/]** -
+
+
+- **[SpaceX](https://zooxinirll.github.io/interceptors.github.io/)** - 
